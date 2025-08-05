@@ -1,0 +1,8 @@
+
+.streamlit/secrets.toml
+
+# This file is used to store secrets for Streamlit applications.
+__pycache__/
+*.pyc
+
+
