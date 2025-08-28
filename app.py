@@ -2,7 +2,7 @@ import streamlit as st
 from test_inference import get_response
 from datetime import datetime
 
-st.set_page_config(page_title="🧠 LLM Playground")
+st.set_page_config(page_title="LLM Playground")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -11,18 +11,17 @@ if "messages" not in st.session_state:
 if "model" not in st.session_state:
     st.session_state.model = "mistralai/Mistral-7B-Instruct-v0.2"
 
-st.title("🧠 LLM Playground")
-
-# st.session_state.model = st.selectbox(
-#     "Select a model:",
-#     ["mistralai/Mistral-7B-Instruct-v0.2", "meta-llama/Llama-2-7b-chat-hf", "google/flan-t5-base"],
+# model_id = st.sidebar.selectbox(
+#     "Choose a model",
+#     ["mistralai/Mistral-7B-Instruct-v0.2", "meta-llama/Llama-2-7b-chat-hf", "google/gemma-2-2b-it"]
 # )
+
+st.title("LLM Playground")
 
 user_input = st.text_input("💬 You:", placeholder="Ask me anything...")
 
 if st.button("🧹 Clear Chat"):
     st.session_state.messages = []
-    # st.experimental_rerun()
 
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
@@ -36,10 +35,10 @@ for msg in st.session_state.messages:
     role = "You" if is_user else "Assistant"
     timestamp = datetime.now().strftime("%I:%M %p")
 
-    # Styles
     bubble_color = "#2A2B29"
     text_color = "#FFFFFF"
     align = "flex-end" if is_user else "flex-start"
+
 
     st.markdown(
         f"""
@@ -54,6 +53,6 @@ for msg in st.session_state.messages:
         unsafe_allow_html=True
     )
 
-
+    
 if st.download_button("📄 Export Chat", data="\n".join([f"{m['role']}: {m['content']}" for m in st.session_state.messages]), file_name="chat_history.txt"):
     st.success("Chat exported successfully!")
