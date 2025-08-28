@@ -1,7 +1,7 @@
 import streamlit as st
 from huggingface_hub import InferenceClient
 
-def get_response(messages, model_id="mistralai/Mistral-7B-Instruct-v0.2"):
+def get_response(messages, model_id="google/gemma-2b-it"):
     hf_token = st.secrets["hf_token"]
     client = InferenceClient(model=model_id, token=hf_token)
 

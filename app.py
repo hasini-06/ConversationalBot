@@ -9,7 +9,7 @@ if "messages" not in st.session_state:
 
 
 if "model" not in st.session_state:
-    st.session_state.model = "mistralai/Mistral-7B-Instruct-v0.2"
+    st.session_state.model = "google/gemma-2b-it"
 
 # model_id = st.sidebar.selectbox(
 #     "Choose a model",
