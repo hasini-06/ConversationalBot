@@ -9,12 +9,7 @@ if "messages" not in st.session_state:
 
 
 if "model" not in st.session_state:
-    st.session_state.model = "google/gemma-2b-it"
-
-# model_id = st.sidebar.selectbox(
-#     "Choose a model",
-#     ["mistralai/Mistral-7B-Instruct-v0.2", "meta-llama/Llama-2-7b-chat-hf", "google/gemma-2-2b-it"]
-# )
+    st.session_state.model = "llama-3.1-8b-instant"
 
 st.title("LLM Playground")
 
